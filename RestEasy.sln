@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FA1C762D-6FD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestEasy.Core", "src\RestEasy.Core\RestEasy.Core.csproj", "{86FA26AD-15D8-45AB-9F26-93F4434EBB5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestEasy", "src\RestEasy\RestEasy.csproj", "{9849355A-2CD0-45B2-B331-1E9F9E4E2AB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CDAA6C4C-33D3-445E-8819-522EFD585705} = {E90A9330-AFFC-483A-9E27-37B0AD9678B7}
 		{86FA26AD-15D8-45AB-9F26-93F4434EBB5B} = {FA1C762D-6FD2-4D25-8958-8079FA01A9F8}
+		{9849355A-2CD0-45B2-B331-1E9F9E4E2AB0} = {FA1C762D-6FD2-4D25-8958-8079FA01A9F8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CDAA6C4C-33D3-445E-8819-522EFD585705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -26,5 +29,9 @@ Global
 		{86FA26AD-15D8-45AB-9F26-93F4434EBB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86FA26AD-15D8-45AB-9F26-93F4434EBB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86FA26AD-15D8-45AB-9F26-93F4434EBB5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9849355A-2CD0-45B2-B331-1E9F9E4E2AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9849355A-2CD0-45B2-B331-1E9F9E4E2AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9849355A-2CD0-45B2-B331-1E9F9E4E2AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9849355A-2CD0-45B2-B331-1E9F9E4E2AB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

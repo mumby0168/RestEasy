@@ -9,6 +9,15 @@
           <e p="appsettings.Development.json" t="Include" />
           <e p="appsettings.json" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
+          <e p="Data" t="Include">
+            <e p="UserStorage.cs" t="Include" />
+          </e>
+          <e p="Domain" t="Include">
+            <e p="UserDomain.cs" t="Include" />
+          </e>
+          <e p="Dto" t="Include">
+            <e p="UserDto.cs" t="Include" />
+          </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
               <e p="netcoreapp3.1" t="Include">
@@ -20,20 +29,61 @@
           <e p="Properties" t="Include">
             <e p="launchSettings.json" t="Include" />
           </e>
+          <e p="Repositorys" t="Include">
+            <e p="UserRepository.cs" t="Include" />
+          </e>
           <e p="RestEasy.BasicRest.csproj" t="IncludeRecursive" />
           <e p="Startup.cs" t="Include" />
         </e>
       </e>
       <e p="src" t="Include">
+        <e p="RestEasy" t="IncludeRecursive">
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Factories" t="Include">
+            <e p="RestEastApiFactory.cs" t="Include" />
+            <e p="RestEasyRepositoryFactory.cs" t="Include" />
+          </e>
+          <e p="Handlers" t="Include">
+            <e p="GenericPostHandler.cs" t="Include" />
+          </e>
+          <e p="HttpContextExtensions.cs" t="Include" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.1" t="Include">
+                <e p="RestEasy.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="RestEasy.csproj" t="IncludeRecursive" />
+          <e p="RestEasyAppExtensions.cs" t="Include" />
+          <e p="RestEasyServiceExtensions.cs" t="Include" />
+        </e>
         <e p="RestEasy.Core" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
-          <e p="Class1.cs" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="RestEasyException.cs" t="Include" />
+            <e p="RestEasyResolveException.cs" t="Include" />
+          </e>
+          <e p="Factories" t="Include">
+            <e p="IRestEasyApiFactory.cs" t="Include" />
+            <e p="IRestEasyRepositoryFactory.cs" t="Include" />
+          </e>
+          <e p="Handlers" t="Include">
+            <e p="IPostHandler.cs" t="Include" />
+          </e>
+          <e p="Markers" t="Include">
+            <e p="IDomain.cs" t="Include" />
+            <e p="IDto.cs" t="Include" />
+          </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
               <e p="netcoreapp3.1" t="Include">
                 <e p="RestEasy.Core.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
+          </e>
+          <e p="Persistence" t="Include">
+            <e p="IRepository.cs" t="Include" />
           </e>
           <e p="RestEasy.Core.csproj" t="IncludeRecursive" />
         </e>

@@ -17,7 +17,11 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/Users/williammumby/Desktop/repos/RestEasy/src/RestEasy/RestEasy.csproj": {
+            "projectPath": "/Users/williammumby/Desktop/repos/RestEasy/src/RestEasy/RestEasy.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
