@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -48,6 +49,29 @@ namespace RestEasy
             
             
             return JsonConvert.DeserializeObject<T>(str);
+        }
+
+        public static Guid ExtractGuidFromRoute(this HttpRequest request)
+        {
+            var routeData = request.HttpContext.GetRouteData();
+            if (routeData.Values.Keys.Contains("id"))
+            {
+                var guidString = routeData.Values["id"];
+                if (Guid.TryParse(guidString.ToString(), out Guid result))
+                {
+                    return result;
+                }
+                else
+                {
+                    //Need to replace with an exception handled by middleware,
+                    throw new Exception();
+                }
+            }
+            else
+            {
+                //Need to replace with exception handled by middleware.
+                throw new Exception();
+            }
         }
 
 
