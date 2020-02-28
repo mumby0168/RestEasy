@@ -6,7 +6,7 @@ namespace RestEasy.Core.Markers
     {
         Guid Id { get; }
 
-        void Map(T dto);
+        void Map(T dto, bool firstCreation = false);
 
         T Map();
     }

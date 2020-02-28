@@ -6,7 +6,7 @@ namespace RestEasy.BasicRest.Domain
 {
     public class UserDomain : IDomain<UserDto>
     {
-        public Guid Id { get; }
+        public Guid Id { get; private set; }
 
 
         public UserDomain()
@@ -20,15 +20,17 @@ namespace RestEasy.BasicRest.Domain
         
         
         
-        public void Map(UserDto dto)
+        public void Map(UserDto dto, bool firstCreation = false)
         {
+            if (!firstCreation) Id = dto.Id;
+            
             FirstName = dto.FirstName;
             SecondName = dto.SecondName;
         }
 
         public UserDto Map()
         {
-            return new UserDto {FirstName = FirstName, SecondName = SecondName};
+            return new UserDto {Id = Id,FirstName = FirstName, SecondName = SecondName};
         }
     }
 }
