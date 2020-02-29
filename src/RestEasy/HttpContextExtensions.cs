@@ -26,6 +26,13 @@ namespace RestEasy
             await context.Response.WriteAsync(result);
         }
         
+        public static async void NoContent<T>(this HttpContext context, T obj)
+        {
+            context.Response.StatusCode = (int) HttpStatusCode.NoContent;
+            var result = JsonSerializer.Serialize(obj);
+            await context.Response.WriteAsync(result);
+        }
+        
         public static async void BadRequest(this HttpContext context, string message = null)
         {
             context.Response.StatusCode = (int) HttpStatusCode.BadRequest;

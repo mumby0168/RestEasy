@@ -1,6 +1,7 @@
 
 
 
+using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,16 @@ namespace RestEasy
                 var genericPost = builder.ServiceProvider.GetService<IPostHandler<TDomain, TDto>>();
                 var dto = await context.Request.ReadAsJsonAsync<TDto>();
                 await genericPost.HandleAsync(dto, context);
+            });
+
+            var genericGet = builder.ServiceProvider.GetService<IGetHandler<TDomain, TDto>>();
+
+            builder.MapGet(basePath, async context =>
+            {
+                var result = await genericGet.GetAllAsync();
+                var enumerable = result.ToList();
+                if (enumerable.Any()) context.Ok(enumerable);
+                else context.NoContent(enumerable);
             });
             
             
