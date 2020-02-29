@@ -18,14 +18,13 @@ namespace RestEasy
         }
 
         public static IServiceCollection AddRestEasyApi<TDomain, TDto, TRepo>(this IServiceCollection services)
-            where TRepo : class, IRepository<TDomain, TDto> where TDto : IDto where TDomain : IDomain<TDto>, new()
+            where TRepo : class, IRepository<TDomain, TDto> where TDto : IDto, new() where TDomain : IDomain<TDto>, new()
         {
 
             services.AddTransient<IRepository<TDomain, TDto>, TRepo>();
             services.AddTransient<IPostHandler<TDomain, TDto>, GenericPostHandler<TDomain, TDto>>();
+            services.AddTransient<IGetHandler<TDomain, TDto>, GenericGetHandler<TDomain, TDto>>();
             return services;
         }
-        
-        
     }
 }

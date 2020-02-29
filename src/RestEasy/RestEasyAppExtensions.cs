@@ -1,8 +1,10 @@
 
 
 
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using RestEasy.Core.Factories;
@@ -23,6 +25,21 @@ namespace RestEasy
             });
 
             var genericGet = builder.ServiceProvider.GetService<IGetHandler<TDomain, TDto>>();
+
+
+            builder.MapGet(basePath + "/{id}", async context =>
+            {
+                var guid = context.Request.ExtractGuidFromRoute();
+                try
+                {
+                    var result = await genericGet.GetAsync(guid);
+                    context.Ok(result);
+                }
+                catch (Exception e)
+                {
+                    context.NoContent();
+                }
+            });
 
             builder.MapGet(basePath, async context =>
             {

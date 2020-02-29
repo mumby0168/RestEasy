@@ -20,6 +20,10 @@ namespace RestEasy.Handlers
         public async Task<TDto> GetAsync(Guid id)
         {
             var domain = await _repository.GetAsync(id);
+            if (domain is null)
+            {
+                throw new Exception();
+            }
             var dto = domain.Map();
             return dto;
         }

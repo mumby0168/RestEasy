@@ -82,5 +82,9 @@ namespace RestEasy
         }
 
 
+        public static void NoContent(this HttpContext context)
+        {
+            context.Response.StatusCode = (int) HttpStatusCode.NoContent;
+        }
     }
 }

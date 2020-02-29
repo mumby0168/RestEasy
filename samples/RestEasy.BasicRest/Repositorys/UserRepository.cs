@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using RestEasy.BasicRest.Data;
 using RestEasy.BasicRest.Domain;
@@ -23,12 +24,13 @@ namespace RestEasy.BasicRest.Repositorys
 
         public Task<UserDomain> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var user = UserStorage.Users.FirstOrDefault(u => u.Id == id);
+            return Task.FromResult(user);
         }
 
         public Task<IEnumerable<UserDomain>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(UserStorage.Users.AsEnumerable());
         }
 
         public Task RemoveAsync(UserDomain domain)

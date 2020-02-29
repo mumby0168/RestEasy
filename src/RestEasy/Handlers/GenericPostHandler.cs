@@ -30,7 +30,7 @@ namespace RestEasy.Handlers
             }
             
             var domain = new TDomain();
-            domain.Map(dto);
+            domain.Map(dto, true);
 
             await _repository.AddAsync(domain);
             context.Ok();
