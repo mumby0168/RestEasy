@@ -44,6 +44,7 @@
             <e p="RestEasyRepositoryFactory.cs" t="Include" />
           </e>
           <e p="Handlers" t="Include">
+            <e p="GenericGetHandler.cs" t="Include" />
             <e p="GenericPostHandler.cs" t="Include" />
           </e>
           <e p="HttpContextExtensions.cs" t="Include" />
@@ -69,6 +70,7 @@
             <e p="IRestEasyRepositoryFactory.cs" t="Include" />
           </e>
           <e p="Handlers" t="Include">
+            <e p="IGetHandler.cs" t="Include" />
             <e p="IPostHandler.cs" t="Include" />
           </e>
           <e p="Markers" t="Include">
