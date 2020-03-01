@@ -183,4 +183,4 @@ The next few things that I am looking to add are:
 6. Service bus plugins to handle messages
 7. Ability to do some sort of filtering using maybe OAuth or Graph QL
 
-Any help or feedback will be much apprecaited.
+Any help or feedback will be much appreciated.
