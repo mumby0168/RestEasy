@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RestEasy.Core.Factories;
 using RestEasy.Core.Handlers;
 using RestEasy.Core.Markers;
+using RestEasy.Core.Middleware;
 
 namespace RestEasy
 {
@@ -24,32 +25,34 @@ namespace RestEasy
                 await genericPost.HandleAsync(dto, context);
             });
 
-            var genericGet = builder.ServiceProvider.GetService<IGetHandler<TDomain, TDto>>();
-
-
+            var get = builder.ServiceProvider.GetService<IGetHandler<TDomain, TDto>>();
             builder.MapGet(basePath + "/{id}", async context =>
             {
                 var guid = context.Request.ExtractGuidFromRoute();
-                try
-                {
-                    var result = await genericGet.GetAsync(guid);
-                    context.Ok(result);
-                }
-                catch (Exception e)
-                {
-                    context.NoContent();
-                }
+                await get.GetAsync(guid, context);
             });
 
-            builder.MapGet(basePath, async context =>
+            builder.MapGet(basePath, async context => await get.GetAllAsync(context));
+            
+            builder.MapPut(basePath, async context =>
             {
-                var result = await genericGet.GetAllAsync();
-                var enumerable = result.ToList();
-                if (enumerable.Any()) context.Ok(enumerable);
-                else context.NoContent(enumerable);
+                var put = builder.ServiceProvider.GetService<IPutHandler<TDomain, TDto>>();
+                var dto = await context.Request.ReadAsJsonAsync<TDto>();
+                await put.HandleAsync(dto, context);
             });
             
-            
+            builder.MapDelete(basePath + "/{id}", async context =>
+            {
+                var delete = builder.ServiceProvider.GetService<IDeleteHandler<TDomain, TDto>>();
+                var id = context.Request.ExtractGuidFromRoute();
+                await delete.HandleAsync(id, context);
+            });
+            return builder;
+        }
+
+        public static IApplicationBuilder UseRestEasy(this IApplicationBuilder builder)
+        {
+            builder.UseMiddleware<RestEasyApiMiddleware>();
             return builder;
         }
         

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Newtonsoft.Json;
+using RestEasy.Core.Exceptions;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace RestEasy
@@ -47,7 +48,7 @@ namespace RestEasy
         {
             if (request.Body is null)
             {
-                throw new Exception();
+                throw new InvalidRequestBodyException("The request body was empty please place a dto.");
             }
 
             using var reader = new StreamReader(request.Body);
@@ -64,20 +65,13 @@ namespace RestEasy
             if (routeData.Values.Keys.Contains("id"))
             {
                 var guidString = routeData.Values["id"];
-                if (Guid.TryParse(guidString.ToString(), out Guid result))
-                {
-                    return result;
-                }
-                else
-                {
-                    //Need to replace with an exception handled by middleware,
-                    throw new Exception();
-                }
+                return Guid.TryParse(guidString.ToString(), out Guid result)
+                    ? result
+                    : throw new InvalidGuidException("The Guid could not be converted please check.");
             }
             else
             {
-                //Need to replace with exception handled by middleware.
-                throw new Exception();
+                throw new InvalidGuidException("The Guid was not present as a route parameter.");
             }
         }
 

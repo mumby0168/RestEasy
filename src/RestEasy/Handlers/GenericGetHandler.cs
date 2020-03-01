@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using RestEasy.Core.Handlers;
 using RestEasy.Core.Markers;
 using RestEasy.Core.Persistence;
@@ -17,22 +18,32 @@ namespace RestEasy.Handlers
             _repository = repository;
         }
         
-        public async Task<TDto> GetAsync(Guid id)
+
+        public async Task GetAsync(Guid id, HttpContext context)
         {
             var domain = await _repository.GetAsync(id);
             if (domain is null)
             {
-                throw new Exception();
+                context.BadRequest($"The domain with id: {id} could not be found.");
+                return;
             }
             var dto = domain.Map();
-            return dto;
+            context.Ok(dto);
         }
 
-        public async Task<IEnumerable<TDto>> GetAllAsync()
+        public async Task GetAllAsync(HttpContext context)
         {
             var domains = await _repository.GetAllAsync();
-
-            return domains.Select(domain => domain.Map()).ToList();
+            var dtos = domains.Select(domain => domain.Map()).ToList();
+            if (dtos.Any())
+            {
+                context.Ok(dtos);
+            }
+            else
+            {
+                context.NoContent();
+            }
+            
         }
     }
 }

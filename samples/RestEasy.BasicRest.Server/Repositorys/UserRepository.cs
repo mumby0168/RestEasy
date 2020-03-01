@@ -11,15 +11,23 @@ namespace RestEasy.BasicRest.Repositorys
 {
     public class UserRepository : IRepository<UserDomain, UserDto>
     {
+
+        public UserRepository()
+        {
+            if (!UserStorage.Users.Any()) UserStorage.Seed();
+        }
+        
         public Task AddAsync(UserDomain domain)
         {
             UserStorage.Users.Add(domain);
             return Task.CompletedTask;
         }
 
-        public Task UpdateAsync(UserDomain domain)
+        public async Task UpdateAsync(UserDomain domain)
         {
-            throw new NotImplementedException();
+            var user = await GetAsync(domain.Id);
+            user.FirstName = domain.FirstName;
+            user.SecondName = domain.SecondName;
         }
 
         public Task<UserDomain> GetAsync(Guid id)
@@ -33,9 +41,10 @@ namespace RestEasy.BasicRest.Repositorys
             return Task.FromResult(UserStorage.Users.AsEnumerable());
         }
 
-        public Task RemoveAsync(UserDomain domain)
+        public async Task RemoveAsync(UserDomain domain)
         {
-            throw new NotImplementedException();
+            var user = await GetAsync(domain.Id);
+            UserStorage.Users.Remove(user);
         }
     }
 }

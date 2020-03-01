@@ -1,0 +1,76 @@
+﻿@page "/"
+@using System.Data
+@using System.Runtime.InteropServices
+@using RestEasy.BasicRest.Client.Data
+@inject UserService UserService
+@using RestEasy.BasicRest.Client.Components
+
+<h1>Rest Easy Example Application (Users)</h1>
+
+<button @onclick="LoadUsers" style="margin-bottom: 10px" class="btn btn-primary">Refresh</button>
+
+<Add UpdateAsync="@AddUser"/>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+      @if (Users.Any())
+      {
+        @foreach (var user in Users)
+        {
+          <tr>
+            <td>@user.Id</td>
+            <td>@user.FirstName</td>
+            <td>@user.SecondName</td>
+            <td>
+              <button @onclick="@(async () => DeleteUser(user.Id))" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        }  
+      }
+      else
+      {
+        <h2>Please add some users!</h2>
+      }     
+  </tbody>
+</table>
+
+@code
+{
+  
+  IEnumerable<User> Users { get; set; } = new List<User>();
+  
+  protected override async Task OnInitializedAsync()
+  {
+    await LoadUsers();
+    await base.OnInitializedAsync();
+  }
+
+  async Task LoadUsers()
+  {
+      Users = await UserService.GetUsersAsync();
+  }
+
+  async Task AddUser(string firstName, string secondName)
+  {
+    await UserService.AddUser(firstName, secondName);
+    await LoadUsers();
+    StateHasChanged();
+  }
+
+  async Task DeleteUser(Guid id)
+  {
+    await UserService.RemoveUserAsync(id);
+    await LoadUsers();
+    StateHasChanged();
+  }
+  
+
+}

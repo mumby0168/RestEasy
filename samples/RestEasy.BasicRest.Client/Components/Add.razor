@@ -1,0 +1,36 @@
+﻿@using RestEasy.BasicRest.Client.Data
+@inherits LayoutComponentBase
+
+<div class="card">
+<div class="card-body">
+<EditForm Model="@User" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+<label for="first">First Name:</label>
+<InputText id="first" @bind-Value="User.FirstName" class="form-control"/>
+</div>
+<br/>
+    <div class="form-group">
+<label for="second">Second Name:</label>
+    <InputText id="second" @bind-Value="User.SecondName" class="form-control" />
+        </div>
+    <br/>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public Func<string, string, Task> UpdateAsync { get; set; }
+    
+    private User User { get; set; } = new User();
+
+    private async Task HandleValidSubmit()
+    {
+        await UpdateAsync.Invoke(User.FirstName, User.SecondName);
+        User = new User();
+    }
+}
+</div>
+</div>
