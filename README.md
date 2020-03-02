@@ -182,5 +182,6 @@ The next few things that I am looking to add are:
 5. CQRS integration
 6. Service bus plugins to handle messages
 7. Ability to do some sort of filtering using maybe OAuth or Graph QL
+8. Swagger integration to generate documentation.
 
 Any help or feedback will be much appreciated.
