@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using RestEasy.Core.Factories;
 using RestEasy.Core.Handlers;
+using RestEasy.Core.Handlers.Generic;
 using RestEasy.Core.Markers;
 using RestEasy.Core.Middleware;
 using RestEasy.Core.Persistence;
@@ -24,7 +25,7 @@ namespace RestEasy
 
             services.AddTransient<RestEasyApiMiddleware>();
             services.AddTransient<IRepository<TDomain, TDto>, TRepo>();
-            services.AddTransient<IPostHandler<TDomain, TDto>, GenericPostHandler<TDomain, TDto>>();
+            services.AddTransient<IRestEasyPostHandler<TDomain, TDto>, GenericRestEasyPostHandler<TDomain, TDto>>();
             services.AddTransient<IGetHandler<TDomain, TDto>, GenericGetHandler<TDomain, TDto>>();
             services.AddTransient<IPutHandler<TDomain, TDto>, GenericPutHandler<TDomain, TDto>>();
             services.AddTransient<IDeleteHandler<TDomain, TDto>, GenericDeleteHandler<TDomain, TDto>>();

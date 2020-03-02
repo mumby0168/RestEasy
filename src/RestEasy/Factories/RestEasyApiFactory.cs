@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RestEasy.Core.Exceptions;
 using RestEasy.Core.Factories;
 using RestEasy.Core.Handlers;
+using RestEasy.Core.Handlers.Generic;
 using RestEasy.Core.Markers;
 
 namespace RestEasy.Factories
@@ -16,9 +17,9 @@ namespace RestEasy.Factories
             _serviceProvider = serviceProvider;
         }
         
-        public IPostHandler<TDomain, TDto> Resolve<TDomain, TDto>() where TDomain : IDomain<TDto> where TDto : IDto
+        public IRestEasyPostHandler<TDomain, TDto> Resolve<TDomain, TDto>() where TDomain : IDomain<TDto> where TDto : IDto
         {
-            var handler = _serviceProvider.GetService<IPostHandler<TDomain, TDto>>();
+            var handler = _serviceProvider.GetService<IRestEasyPostHandler<TDomain, TDto>>();
             if (handler is null)
             {
                 throw new RestEasyResolveException();

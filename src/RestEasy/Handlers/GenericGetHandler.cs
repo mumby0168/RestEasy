@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using RestEasy.Core.Handlers;
+using RestEasy.Core.Handlers.Generic;
 using RestEasy.Core.Markers;
 using RestEasy.Core.Persistence;
 

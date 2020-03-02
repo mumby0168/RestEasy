@@ -111,8 +111,8 @@
           <e p="Handlers" t="Include">
             <e p="GenericDeleteHandler.cs" t="Include" />
             <e p="GenericGetHandler.cs" t="Include" />
-            <e p="GenericPostHandler.cs" t="Include" />
             <e p="GenericPutHandler.cs" t="Include" />
+            <e p="GenericRestEasyPostHandler.cs" t="Include" />
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
@@ -141,10 +141,12 @@
             <e p="IRestEasyRepositoryFactory.cs" t="Include" />
           </e>
           <e p="Handlers" t="Include">
-            <e p="IDeleteHandler.cs" t="Include" />
-            <e p="IGetHandler.cs" t="Include" />
-            <e p="IPostHandler.cs" t="Include" />
-            <e p="IPutHandler.cs" t="Include" />
+            <e p="Generic" t="Include">
+              <e p="IGenericPostHandler.cs" t="Include" />
+              <e p="IGenricDeleteHandler.cs" t="Include" />
+              <e p="IGenricGetHandler.cs" t="Include" />
+              <e p="IGenricPutHandler.cs" t="Include" />
+            </e>
           </e>
           <e p="Markers" t="Include">
             <e p="IDomain.cs" t="Include" />
