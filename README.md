@@ -175,13 +175,13 @@ Any additions or ideas please raise and issue or better a pull request and we ca
 
 The next few things that I am looking to add are: 
 
-[ ] Good logging for debugging
-[ ] Security through user roles
-[ ] Ability to define extra more specialised endpoints on top of the standard endpoints.
-[ ] Allow for a paging endpoint to be added.
-[ ] CQRS integration
-[ ] Service bus plugins to handle messages
-[ ] Ability to do some sort of filtering using maybe OAuth or Graph QL
-[ ] Swagger integration to generate documentation.
+- [ ] Good logging for debugging
+- [ ] Security through user roles
+- [ ] Ability to define extra more specialised endpoints on top of the standard endpoints.
+- [ ] Allow for a paging endpoint to be added.
+- [ ] CQRS integration
+- [ ] Service bus plugins to handle messages
+- [ ] Ability to do some sort of filtering using maybe OAuth or Graph QL
+- [ ] Swagger integration to generate documentation.
 
 Any help or feedback will be much appreciated.
