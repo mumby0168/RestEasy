@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using RestEasy.Core.Builders;
 using RestEasy.Core.Factories;
 using RestEasy.Core.Handlers;
 using RestEasy.Core.Handlers.Generic;
@@ -52,25 +53,16 @@ namespace RestEasy
             return builder;
         }
 
-        /// <summary>
-        /// Maps a basic endpoint for a get taking a id.
-        /// </summary>
-        /// <param name="builder"></param>
-        /// <param name="path"></param>
-        /// <typeparam name="TReturns">The value that the request will return</typeparam>
-        /// <typeparam name="TInput">This should be a int or a Guid</typeparam>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-
-        public static IEndpointRouteBuilder Get<TReturns>(this IEndpointRouteBuilder builder, string path)
-            where TReturns : class
+        public static IApplicationBuilder UseRestEasyEndpoints(this IApplicationBuilder builder, Action<IRestEasyEndpointBuilder> build)
         {
-            return builder;
-        }
+            var restEasyEndpointBuilder =  builder.ApplicationServices.GetService<IRestEasyEndpointBuilder>();
 
-        public static IEndpointRouteBuilder Get<TReturns, TInput>(this IEndpointRouteBuilder builder, string path)
-            where TReturns : class
-        {
+            builder.UseEndpoints(routeBuilder =>
+            {
+                restEasyEndpointBuilder.Initialize(routeBuilder);
+                build(restEasyEndpointBuilder);
+            });
+
             return builder;
         }
 

@@ -2,11 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>RestEasy.BasicRest</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\RestEasy.Core\RestEasy.Core.csproj" />
       <ProjectReference Include="..\..\src\RestEasy\RestEasy.csproj" />
     </ItemGroup>
 
