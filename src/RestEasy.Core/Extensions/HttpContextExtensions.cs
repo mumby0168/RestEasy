@@ -43,6 +43,7 @@ namespace RestEasy
                 await context.Response.WriteAsync(message);
             }
         }
+        
 
         public static async Task<T> ReadAsJsonAsync<T>(this HttpRequest request)
         {
@@ -74,6 +75,13 @@ namespace RestEasy
                 throw new InvalidGuidException("The Guid was not present as a route parameter.");
             }
         }
+
+        public static Task<T> ExtractRouteDataAsync<T>(this HttpContext request) where T : class
+        {
+            throw new NotImplementedException();
+        }
+        
+        
 
 
         public static void NoContent(this HttpContext context)

@@ -6,6 +6,7 @@
       <e p="RestEasy.sln" t="IncludeFlat" />
       <e p="Samples" t="Include">
         <e p="basic" t="Include" />
+        <e p="custom" t="Include" />
         <e p="RestEasy.BasicRest.Client" t="IncludeRecursive">
           <e p="_Imports.razor" t="Include" />
           <e p="App.razor" t="Include" />
@@ -100,10 +101,34 @@
           <e p="RestEasy.BasicRest.Server.csproj" t="IncludeRecursive" />
           <e p="Startup.cs" t="Include" />
         </e>
+        <e p="RestEasy.Custom.Server" t="IncludeRecursive">
+          <e p="appsettings.Development.json" t="Include" />
+          <e p="appsettings.json" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="obj" t="ExcludeRecursive">
+            <e p="Debug" t="Include">
+              <e p="netcoreapp3.1" t="Include">
+                <e p="RestEasy.Custom.Server.AssemblyInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Program.cs" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="launchSettings.json" t="Include" />
+          </e>
+          <e p="RestEasy.Custom.Server.csproj" t="IncludeRecursive" />
+          <e p="Startup.cs" t="Include" />
+        </e>
       </e>
       <e p="src" t="Include">
         <e p="RestEasy" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
+          <e p="Builders" t="Include">
+            <e p="RestEasyEndpointBuilder.cs" t="Include" />
+          </e>
+          <e p="Dispatchers" t="Include">
+            <e p="RestEasyDispatcher.cs" t="Include" />
+          </e>
           <e p="Factories" t="Include">
             <e p="RestEasyApiFactory.cs" t="Include" />
             <e p="RestEasyRepositoryFactory.cs" t="Include" />
@@ -127,10 +152,17 @@
         </e>
         <e p="RestEasy.Core" t="IncludeRecursive">
           <e p="bin" t="ExcludeRecursive" />
+          <e p="Builders" t="Include">
+            <e p="IRestEasyEndpointBuilder.cs" t="Include" />
+          </e>
+          <e p="Dispatcher" t="Include">
+            <e p="IRestEasyDispatcher.cs" t="Include" />
+          </e>
           <e p="Exceptions" t="Include">
             <e p="InvalidGuidException.cs" t="Include" />
             <e p="InvalidRequestBodyException.cs" t="Include" />
             <e p="RestEasyException.cs" t="Include" />
+            <e p="RestEasyHandlerNotRegisteredException.cs" t="Include" />
             <e p="RestEasyResolveException.cs" t="Include" />
           </e>
           <e p="Extensions" t="Include">
@@ -147,10 +179,16 @@
               <e p="IGenricGetHandler.cs" t="Include" />
               <e p="IGenricPutHandler.cs" t="Include" />
             </e>
+            <e p="IRestEasyCreateRequest.cs" t="Include" />
+            <e p="IRestEasyDeleteRequest.cs" t="Include" />
+            <e p="IRestEasyReadManyRequest.cs" t="Include" />
+            <e p="IRestEasyReadRequest.cs" t="Include" />
+            <e p="IRestEasyUpdateRequest.cs" t="Include" />
           </e>
           <e p="Markers" t="Include">
             <e p="IDomain.cs" t="Include" />
             <e p="IDto.cs" t="Include" />
+            <e p="IRestEasyRequestParameter.cs" t="Include" />
           </e>
           <e p="Middleware" t="Include">
             <e p="RestEasyApiMiddleware.cs" t="Include" />
