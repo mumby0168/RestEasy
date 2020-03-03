@@ -1,7 +1,7 @@
 # RestEasy
 A simple, quick and effective way to make rest api's in asp.net core
 
-This is a new project please see the Final Words seciton to see what is in the pipeline.
+This is a new project please see the [Roadmap](#roadmap) seciton to see what is in the pipeline.
 
 ## Inspiration
 The main inspiration for this was the hassle for creating controllers and defining routes. In addition controllers can very often violate the first principle of SOLID, Single Responsibility this in the case of a API can make testing difficult and a pain and often sends people in the wrong direction.
@@ -167,7 +167,7 @@ public class Startup
 }
 ```
 
-## Final words
+## Roadmap
 
 Any questions please feel free to raise an issue and I will endeavour to answer them.
 
@@ -175,13 +175,13 @@ Any additions or ideas please raise and issue or better a pull request and we ca
 
 The next few things that I am looking to add are: 
 
-1. Good logging for debugging
-2. Security through user roles
-3. Ability to define extra more specialised endpoints on top of the standard endpoints.
-4. Allow for a paging endpoint to be added.
-5. CQRS integration
-6. Service bus plugins to handle messages
-7. Ability to do some sort of filtering using maybe OAuth or Graph QL
-8. Swagger integration to generate documentation.
+[ ] Good logging for debugging
+[ ] Security through user roles
+[ ] Ability to define extra more specialised endpoints on top of the standard endpoints.
+[ ] Allow for a paging endpoint to be added.
+[ ] CQRS integration
+[ ] Service bus plugins to handle messages
+[ ] Ability to do some sort of filtering using maybe OAuth or Graph QL
+[ ] Swagger integration to generate documentation.
 
 Any help or feedback will be much appreciated.
