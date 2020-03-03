@@ -1,6 +1,8 @@
 # RestEasy
 A simple, quick and effective way to make rest api's in asp.net core
 
+To get started see the [Getting Started](#getting-started) section.
+
 This is a new project please see the [Roadmap](#roadmap) seciton to see what is in the pipeline.
 
 ## Inspiration
